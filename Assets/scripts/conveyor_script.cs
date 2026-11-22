@@ -9,7 +9,7 @@ public class conveyor_script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        speed = 2;
+        speed = 1;
         direction = -transform.up;
     }
 

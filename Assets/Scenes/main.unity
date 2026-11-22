@@ -603,6 +603,231 @@ MonoBehaviour:
   m_DefaultActionMap: camera
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &1028319576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1028319578}
+  - component: {fileID: 1028319577}
+  m_Layer: 0
+  m_Name: conveyor_spawner_test
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1028319577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028319576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a3abca60a1268b49b7dd64b9cb34cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::conveyor_spawner
+  conveyor: {fileID: 3115822643959052284, guid: 277358f75676ed14e9dd6844b277eb59, type: 3}
+  box_spawner: {fileID: 683336368399538748, guid: 78eba96d62d82ca4ea792fca8f9c4d2c, type: 3}
+--- !u!4 &1028319578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028319576}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.79973, y: 1.04966, z: 20.78551}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1543666869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1543666870}
+  - component: {fileID: 1543666872}
+  - component: {fileID: 1543666871}
+  m_Layer: 0
+  m_Name: placement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1543666870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543666869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1543666871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543666869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 82eb35a362a206844b182bea5fe6a3c4, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d99055b6-458e-4388-8ea6-06cadc71b1ac
+    m_ActionName: 'camera/Forward[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d44c9322-b0ff-41d3-aafa-4b59e62d248e
+    m_ActionName: 'camera/Backward[/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5043e1e1-bfb3-48ce-a82c-f4b1f8c7e6ad
+    m_ActionName: 'camera/Left[/Keyboard/a]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ba7e17fb-1005-46e1-b499-9e5a6415dd18
+    m_ActionName: 'camera/Right[/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1543666872}
+        m_TargetAssemblyTypeName: placement_script, Assembly-CSharp
+        m_MethodName: One
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c4b62979-c5b1-4c81-9cd6-67eb7ddedf75
+    m_ActionName: 'placement/1[/Keyboard/1]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1543666872}
+        m_TargetAssemblyTypeName: placement_script, Assembly-CSharp
+        m_MethodName: Two
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 36dd5248-4c9b-4e09-b419-ef565b837844
+    m_ActionName: 'placement/2[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1543666872}
+        m_TargetAssemblyTypeName: placement_script, Assembly-CSharp
+        m_MethodName: Three
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a4f5660b-cb68-4c7f-82c6-1cff1398eeb7
+    m_ActionName: 'placement/3[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1543666872}
+        m_TargetAssemblyTypeName: placement_script, Assembly-CSharp
+        m_MethodName: Four
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 346853ce-e86e-41c4-afe9-cd4397101d05
+    m_ActionName: 'placement/4[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1543666872}
+        m_TargetAssemblyTypeName: placement_script, Assembly-CSharp
+        m_MethodName: Five
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ba768b09-4103-40ec-b13c-d74d184b33c9
+    m_ActionName: 'placement/5[/Keyboard/5]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: placement
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &1543666872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543666869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc4f2f4ea4c7bf48b331a3caaaed60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::placement_script
+  conveyor: {fileID: 3115822643959052284, guid: 277358f75676ed14e9dd6844b277eb59, type: 3}
+  conveyor_short: {fileID: 2297569075018547077, guid: f84a2e832c1e97a459c5dcf770afafce, type: 3}
+  conveyor_incline: {fileID: 7437499493687601217, guid: a271c512ca0e19c48b6c460f291e07cc, type: 3}
+  box_spawner: {fileID: 683336368399538748, guid: 78eba96d62d82ca4ea792fca8f9c4d2c, type: 3}
+  can_spawner: {fileID: 683336368399538748, guid: a8648bb3ee0798647b9ef2f76961c780, type: 3}
+  preview_layer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -610,3 +835,5 @@ SceneRoots:
   - {fileID: 961739753}
   - {fileID: 203844589}
   - {fileID: 183473570}
+  - {fileID: 1543666870}
+  - {fileID: 1028319578}
