@@ -11,9 +11,7 @@ public class placement_script : MonoBehaviour
     [SerializeField] private GameObject can_spawner;
 
     [SerializeField] private LayerMask preview_layer;
-    private int preview_layer_num;
 
-    private Camera cam;
     private int raycast_dist;
 
     private List<GameObject> placed; // list of placed objects
@@ -24,8 +22,6 @@ public class placement_script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        preview_layer_num = LayerMask.NameToLayer("placement_preview");
-        cam = Camera.main;
         raycast_dist = 100;
         placed = new List<GameObject>();
     }
@@ -33,7 +29,7 @@ public class placement_script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         bool success = Physics.Raycast(ray, out RaycastHit hit, raycast_dist, ~preview_layer);
 
         if (success)
@@ -47,19 +43,25 @@ public class placement_script : MonoBehaviour
 
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                if (placed.Contains(hit.transform.gameObject))
+                if (clone != null)
+                {
+                    GameObject box = clone.transform.Find("selection_box").gameObject;
+                    selection_box_script script = box.GetComponent<selection_box_script>();
+                    if (script.can_place)
+                    {
+                        GameObject new_obj = Instantiate(selected, clone.transform.position, clone.transform.rotation);
+                        new_obj.name = selected.name;
+                        placed.Add(new_obj);
+                        ClearSelected();
+                    }
+                }
+                else if (placed.Contains(hit.transform.gameObject))
                 {
                     ClearSelected();
                     selected = hit.transform.gameObject;
-                    GameObject child = selected.transform.Find("selection_box").gameObject;
-                    selected_box = child.GetComponent<MeshRenderer>();
+                    GameObject box = selected.transform.Find("selection_box").gameObject;
+                    selected_box = box.GetComponent<MeshRenderer>();
                     selected_box.enabled = true;
-                }
-                else if (clone != null)
-                {
-                    GameObject new_obj = Instantiate(selected, clone.transform.position, clone.transform.rotation);
-                    placed.Add(new_obj);
-                    ClearSelected();
                 }
                 else
                 {
@@ -92,9 +94,10 @@ public class placement_script : MonoBehaviour
             ClearSelected();
             selected = obj;
             clone = Instantiate(selected);
+            clone.name = selected.name + "_preview";
             foreach (Transform child in clone.GetComponentsInChildren<Transform>())
             {
-                child.gameObject.layer = preview_layer_num;
+                child.gameObject.layer = LayerMask.NameToLayer("placement_preview");
             }
         }
     }
