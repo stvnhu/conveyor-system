@@ -155,7 +155,7 @@ public class placement_script : MonoBehaviour
             }
             foreach (BoxCollider bc in clone.GetComponentsInChildren<BoxCollider>())
             {
-                bc.enabled = false;
+                bc.isTrigger = true;
             }
             rotation = 0;
         }
