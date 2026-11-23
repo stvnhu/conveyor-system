@@ -153,6 +153,10 @@ public class placement_script : MonoBehaviour
             {
                 child.gameObject.layer = LayerMask.NameToLayer("placement_preview");
             }
+            foreach (BoxCollider bc in clone.GetComponentsInChildren<BoxCollider>())
+            {
+                bc.enabled = false;
+            }
             rotation = 0;
         }
     }
