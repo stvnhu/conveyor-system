@@ -39,8 +39,8 @@ g will reverse the movement direction of all placed conveyors.
 - 1 - Select Conveyor to place
 - 2 - Select Conveyor Short to place
 - 3 - Select Conveyor Inclined to place
-- 4 - Select Box placeer to spawn
-- 5 - Select Can placeer to spawn
+- 4 - Select Box spawner to place
+- 5 - Select Can spawner to place
 
 ###
 - R - Rotate Object while placing
