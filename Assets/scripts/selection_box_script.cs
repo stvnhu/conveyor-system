@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class selection_box_script : MonoBehaviour
 {
+    private snap_point sp;
     private bool is_clone;
     private Material mat;
     public bool can_place;
@@ -9,9 +10,12 @@ public class selection_box_script : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject root = transform.root.gameObject;
+        sp = root.GetComponent<snap_point>();
+
         can_place = true;
 
-        if (transform.root.gameObject.name.EndsWith("_preview"))
+        if (root.name.EndsWith("_preview"))
         {
             is_clone = true;
 
@@ -39,7 +43,7 @@ public class selection_box_script : MonoBehaviour
 
     void OnTriggerStay(Collider collider)
     {
-        if (is_clone && collider.name == "selection_box")
+        if (!sp.hovering_sp && is_clone && collider.name == "selection_box")
         {
             mat.color = new Color(1, 0, 0, 0.2f);
             can_place = false;

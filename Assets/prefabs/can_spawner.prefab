@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8562412032337745183}
   - component: {fileID: 877046621828513845}
   - component: {fileID: 2142590679990461934}
+  - component: {fileID: 511773718066364911}
   m_Layer: 0
   m_Name: can_spawner
   m_TagString: Untagged
@@ -105,6 +106,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::box_spawner_script
   prefab: {fileID: 6060734208228851172, guid: df391e8ffd7474d4d872772c1b0a38ef, type: 3}
+--- !u!114 &511773718066364911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683336368399538748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a556a70cf2e824bb3f0d5422f2b9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::snap_point
+  hovering_sp: 0
+  rotation: 0
 --- !u!1 &1248609426830143984
 GameObject:
   m_ObjectHideFlags: 0

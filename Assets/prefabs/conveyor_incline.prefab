@@ -194,6 +194,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7989c86c18bcd5c47b3895478d1e8aee, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5747167245603473695}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7989c86c18bcd5c47b3895478d1e8aee, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1296153730203189106}
   m_SourcePrefab: {fileID: 100100000, guid: 7989c86c18bcd5c47b3895478d1e8aee, type: 3}
 --- !u!1 &7437499493687601217 stripped
 GameObject:
@@ -261,6 +264,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::conveyor_script
   rb: {fileID: 2455722418226064599}
+--- !u!114 &1296153730203189106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437499493687601217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a556a70cf2e824bb3f0d5422f2b9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::snap_point
+  hovering_sp: 0
 --- !u!4 &7817297664312472315 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7989c86c18bcd5c47b3895478d1e8aee, type: 3}

@@ -4,12 +4,12 @@ public class conveyor_script : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     private float speed;
-    private Vector3 direction;
+    public Vector3 direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        speed = 1;
+        speed = 2;
         direction = transform.up;
     }
 
