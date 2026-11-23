@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 4855306432609557830}
   serializedVersion: 2
   m_LocalRotation: {x: -0.18138012, y: 4.0274464e-17, z: -1.6543612e-24, w: 0.9834131}
-  m_LocalPosition: {x: 0, y: 0.00041, z: -0.00136}
-  m_LocalScale: {x: 0.011999999, y: 0.022582093, z: 0.0141980015}
+  m_LocalPosition: {x: 0, y: 0.00049, z: -0.0006}
+  m_LocalScale: {x: 0.013561199, y: 0.023045026, z: 0.013873001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7817297664312472315}
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f310cfe3365f157489812ecc5ef023db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::selection_box_script
+  can_place: 0
 --- !u!1001 &7779449059007829264
 PrefabInstance:
   m_ObjectHideFlags: 0

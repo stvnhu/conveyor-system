@@ -14,16 +14,18 @@ public class placement_script : MonoBehaviour
 
     private int raycast_dist;
 
-    private List<GameObject> placed; // list of placed objects
+    public List<GameObject> placed; // list of placed objects
     private GameObject selected; // can either be prefab or placed object
     private MeshRenderer selected_box; // selected object indicator
     private GameObject clone; // object placement indicator
+    private float height_offset; // height of object to offset from ground
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         raycast_dist = 100;
         placed = new List<GameObject>();
+        height_offset = 0;
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class placement_script : MonoBehaviour
             if (clone != null)
             {
                 Vector3 world_pos = hit.point;
-                world_pos += new Vector3(0, selected.transform.position.y / 2, 0);
+                world_pos += new Vector3(0, height_offset / 2, 0);
                 clone.transform.position = world_pos;
             }
 
@@ -55,10 +57,10 @@ public class placement_script : MonoBehaviour
                         ClearSelected();
                     }
                 }
-                else if (placed.Contains(hit.transform.gameObject))
+                else if (placed.Contains(hit.transform.root.gameObject))
                 {
                     ClearSelected();
-                    selected = hit.transform.gameObject;
+                    selected = hit.transform.root.gameObject;
                     GameObject box = selected.transform.Find("selection_box").gameObject;
                     selected_box = box.GetComponent<MeshRenderer>();
                     selected_box.enabled = true;
@@ -131,6 +133,7 @@ public class placement_script : MonoBehaviour
         if (context.performed)
         {
             SelectPrefab(conveyor);
+            height_offset = 0.9546666f;
         }
     }
 
@@ -139,6 +142,7 @@ public class placement_script : MonoBehaviour
         if (context.performed)
         {
             SelectPrefab(conveyor_short);
+            height_offset = 0.9546667f;
         }
     }
 
@@ -147,6 +151,7 @@ public class placement_script : MonoBehaviour
         if (context.performed)
         {
             SelectPrefab(conveyor_incline);
+            height_offset = 1.297904f;
         }
     }
 
@@ -155,6 +160,7 @@ public class placement_script : MonoBehaviour
         if (context.performed)
         {
             SelectPrefab(box_spawner);
+            height_offset = 3;
         }
     }
 
@@ -163,6 +169,7 @@ public class placement_script : MonoBehaviour
         if (context.performed)
         {
             SelectPrefab(can_spawner);
+            height_offset = 3;
         }
     }
 }

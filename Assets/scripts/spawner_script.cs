@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class box_spawner_script : MonoBehaviour
+public class spawner_script : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
     private float spawn_time;
