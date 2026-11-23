@@ -10,7 +10,7 @@ public class conveyor_script : MonoBehaviour
     void Start()
     {
         speed = 1;
-        direction = -transform.up;
+        direction = transform.up;
     }
 
     void FixedUpdate()

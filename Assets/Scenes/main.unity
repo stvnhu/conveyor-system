@@ -627,7 +627,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1028319576}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a3abca60a1268b49b7dd64b9cb34cbd, type: 3}
   m_Name: 
@@ -803,6 +803,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ba768b09-4103-40ec-b13c-d74d184b33c9
     m_ActionName: 'placement/5[/Keyboard/5]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1543666872}
+        m_TargetAssemblyTypeName: placement_script, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: da5c3a53-55ca-442f-ada4-5019fbcb5598
+    m_ActionName: 'placement/Rotate[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1543666872}
+        m_TargetAssemblyTypeName: placement_script, Assembly-CSharp
+        m_MethodName: Delete
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 87b2d106-6b43-44af-8412-ab15beef336f
+    m_ActionName: 'placement/Delete[/Keyboard/d]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: placement
@@ -828,6 +860,7 @@ MonoBehaviour:
   preview_layer:
     serializedVersion: 2
     m_Bits: 1024
+  placed: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

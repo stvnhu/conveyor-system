@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,51 +13,59 @@ public class placement_script : MonoBehaviour
     [SerializeField] private LayerMask preview_layer;
     private int preview_layer_num;
 
-    private GameObject selected; // selected prefab for placement
-    private GameObject clone; // clone for placement display
-
     private Camera cam;
+    private int raycast_dist;
+
+    private List<GameObject> placed; // list of placed objects
+    private GameObject selected; // can either be prefab or placed object
+    private MeshRenderer selected_box; // selected object indicator
+    private GameObject clone; // object placement indicator
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         preview_layer_num = LayerMask.NameToLayer("placement_preview");
         cam = Camera.main;
+        raycast_dist = 100;
+        placed = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (selected != null)
-        {
-            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        bool success = Physics.Raycast(ray, out RaycastHit hit, raycast_dist, ~preview_layer);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 100, ~preview_layer))
+        if (success)
+        {
+            if (clone != null)
             {
                 Vector3 world_pos = hit.point;
                 world_pos += new Vector3(0, selected.transform.position.y / 2, 0);
                 clone.transform.position = world_pos;
             }
-            if (Mouse.current.leftButton.isPressed)
+
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                clone = Instantiate(selected, clone.transform.position, clone.transform.rotation);
-                ClearSelected();
+                if (placed.Contains(hit.transform.gameObject))
+                {
+                    ClearSelected();
+                    selected = hit.transform.gameObject;
+                    GameObject child = selected.transform.Find("selection_box").gameObject;
+                    selected_box = child.GetComponent<MeshRenderer>();
+                    selected_box.enabled = true;
+                }
+                else if (clone != null)
+                {
+                    GameObject new_obj = Instantiate(selected, clone.transform.position, clone.transform.rotation);
+                    placed.Add(new_obj);
+                    ClearSelected();
+                }
+                else
+                {
+                    ClearSelected();
+                }
             }
-        }
-    }
-
-    void SetLayerRecursive(GameObject obj, int layer)
-    {
-        if (obj == null)
-        {
-            return;
-        }
-
-        obj.layer = layer;
-
-        foreach (Transform child in obj.transform)
-        {
-            SetLayerRecursive(child.gameObject, layer);
         }
     }
 
@@ -65,24 +74,52 @@ public class placement_script : MonoBehaviour
         selected = null;
         Destroy(clone);
         clone = null;
+        if (selected_box != null)
+        {
+            selected_box.enabled = false;
+            selected_box = null;
+        }
     }
 
-    void SelectObject(GameObject opt)
+    void SelectPrefab(GameObject obj)
     {
-        if (selected == opt)
+        if (selected == obj)
         {
             ClearSelected();
-        } 
+        }
         else
         {
-            if (selected != null)
+            ClearSelected();
+            selected = obj;
+            clone = Instantiate(selected);
+            foreach (Transform child in clone.GetComponentsInChildren<Transform>())
             {
+                child.gameObject.layer = preview_layer_num;
+            }
+        }
+    }
+
+    public void Rotate(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (clone != null)
+            {
+                clone.transform.rotation = Quaternion.Euler(0, 90, 0) * clone.transform.rotation;
+            }
+        }
+    }
+
+    public void Delete(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (selected_box != null)
+            {
+                placed.Remove(selected);
+                Destroy(selected);
                 ClearSelected();
             }
-
-            selected = opt;
-            clone = Instantiate(selected);
-            SetLayerRecursive(clone, preview_layer_num);
         }
     }
 
@@ -90,7 +127,7 @@ public class placement_script : MonoBehaviour
     {
         if (context.performed)
         {
-            SelectObject(conveyor);
+            SelectPrefab(conveyor);
         }
     }
 
@@ -98,7 +135,7 @@ public class placement_script : MonoBehaviour
     {
         if (context.performed)
         {
-            SelectObject(conveyor_short);
+            SelectPrefab(conveyor_short);
         }
     }
 
@@ -106,7 +143,7 @@ public class placement_script : MonoBehaviour
     {
         if (context.performed)
         {
-            SelectObject(conveyor_incline);
+            SelectPrefab(conveyor_incline);
         }
     }
 
@@ -114,7 +151,7 @@ public class placement_script : MonoBehaviour
     {
         if (context.performed)
         {
-            SelectObject(box_spawner);
+            SelectPrefab(box_spawner);
         }
     }
 
@@ -122,7 +159,7 @@ public class placement_script : MonoBehaviour
     {
         if (context.performed)
         {
-            SelectObject(can_spawner);
+            SelectPrefab(can_spawner);
         }
     }
 }
