@@ -99,7 +99,7 @@ public class placement_script : MonoBehaviour
                     conveyor_script cs = new_obj.GetComponent<conveyor_script>();
                     if (cs != null)
                     {
-                        cs.direction = clone_cs.direction;
+                        cs.dir = clone_cs.dir;
                     }
                     placed.Add(new_obj);
                     placed_pos.Add(new_obj.transform.position);
@@ -205,14 +205,16 @@ public class placement_script : MonoBehaviour
         {
             if (clone != null)
             {
-                clone_cs.direction *= -1;
+                clone_cs.dir++;
+                clone_cs.dir %= 2;
             }
             else if (selected != null)
             {
                 conveyor_script cs = selected.GetComponent<conveyor_script>();
                 if (cs != null)
                 {
-                    cs.direction *= -1;
+                    ++cs.dir;
+                    cs.dir %= 2;
                 }
             }
         }
@@ -227,7 +229,8 @@ public class placement_script : MonoBehaviour
                 conveyor_script cs = obj.GetComponent<conveyor_script>();
                 if (cs != null)
                 {
-                    cs.direction *= -1;
+                    ++cs.dir;
+                    cs.dir %= 2;
                 }
             }
         }

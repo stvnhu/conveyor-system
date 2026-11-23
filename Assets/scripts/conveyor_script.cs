@@ -5,13 +5,14 @@ public class conveyor_script : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameObject arrow;
     private float speed;
-    public Vector3 direction;
+    private Vector3 direction;
+    public int dir = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         speed = 2;
-        direction = -transform.up;
+        direction = transform.up;
     }
 
     void FixedUpdate()
@@ -20,13 +21,15 @@ public class conveyor_script : MonoBehaviour
         rb.position -= movement;
         rb.MovePosition(rb.position + movement);
         Vector3 scale = arrow.transform.localScale;
-        if (direction == -transform.up)
+        if (dir == 0)
         {
             scale.y = -Mathf.Abs(scale.y);
+            direction = -transform.up;
         }
         else
         {
             scale.y = Mathf.Abs(scale.y);
+            direction = transform.up;
         }
         arrow.transform.localScale = scale;
     }
